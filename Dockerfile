@@ -9,6 +9,7 @@ curl \
 git \
 g++ \
 libpython3-dev \
+libsqlite3-dev \
 make \
 neovim \
 python3 \
