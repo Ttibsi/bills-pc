@@ -9,9 +9,9 @@ int add(int x, int y) { return x + y; }
 
 std::vector<std::string> get_from_db() {
     std::vector<std::string> ret;
-    sqlite3* db;
+    sqlite3 *db;
     const auto res = sqlite3_open("./db.db", &db);
-    if (res != SQLITE_OK) { 
+    if (res != SQLITE_OK) {
         std::cerr << "Database error\n";
         return ret;
     }
