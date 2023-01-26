@@ -20,9 +20,7 @@ generate: testenv # Run CMake in a docker env
 create: generate # Make the pre-generated makefiles in the docker env
 	@echo "[Running generated Makefile]"
 	docker exec --workdir="/$(REPO)/build/" $(ENV_NAME) make
-
-run: create
-	docker exec $(ENV_NAME) ./build/src/$(BINARY)
+	docker exec --workdir="/$(REPO)/build/" $(ENV_NAME) mv /$(REPO)/build/bpc_cpp.cpython-310-x86_64-linux-gnu.so /$(REPO)/
 
 local-build: # Build repo locally to build/
 	@echo "[Building to build/]"

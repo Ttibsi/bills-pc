@@ -1,5 +1,6 @@
+#include <iostream>
 #include <pybind11/pybind11.h>
-#include <SQLiteCpp/SQLiteCpp.h>
+#include <sqlite3.h>
 #include <string>
 #include <vector>
 namespace py = pybind11;
@@ -8,33 +9,17 @@ int add(int x, int y) { return x + y; }
 
 std::vector<std::string> get_from_db() {
     std::vector<std::string> ret;
-    try {
-        // Open a database file
-        SQLite::Database    db = "db.db";
-        
-        // Compile a SQL query, containing one parameter (index 1)
-        SQLite::Statement   query(db, "SELECT * FROM ABILITIES");
-        
-        // Bind the integer value 6 to the first parameter of the SQL query
-        query.bind(1, 6);
-        
-        // Loop to execute the query step by step, to get rows of result
-        while (query.executeStep())
-        {
-            // Demonstrate how to get some typed column value
-            int         id      = query.getColumn(0);
-            std::string value   = query.getColumn(1);
-            std::string size    = query.getColumn(2);
-
-            ret.push_back(std::string(id));
-            ret.push_back(value);
-            ret.push_back(size);
-        }
-    }
-    catch (std::exception& e) {
-        std::cout << "exception: " << e.what() << std::endl;
+    sqlite3* db;
+    const auto res = sqlite3_open("./db.db", &db);
+    if (res != SQLITE_OK) { 
+        std::cerr << "Database error\n";
+        return ret;
     }
 
+    std::string stmt = "SELECT * FROM ABILITIES;";
+    // sqlite3_prepare_v2(db, )
+
+    sqlite3_close(db);
     return ret;
 }
 

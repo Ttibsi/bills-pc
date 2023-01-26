@@ -1,4 +1,3 @@
-#https://docs.docker.com/config/containers/multi-service_container/
 FROM ubuntu:jammy
 
 # hadolint ignore=DL3008
