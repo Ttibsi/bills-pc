@@ -37,3 +37,8 @@ docker-clean: # Remove docker environments
 	@echo "[Removing container]"
 	docker kill $$(docker ps -q)
 	docker container prune -f
+
+db-clean: # Regenerate database from script
+	@echo "[Regenerating database]"
+	rm db.db
+	sqlite3 db.db < scripts/build_db.sql

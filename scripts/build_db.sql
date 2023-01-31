@@ -1,6 +1,6 @@
 CREATE TABLE ABILITIES (
-    ability_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    ability TEXT NOT NULL UNIQUE,
+    ability_id INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
     description TEXT NOT NULL
 );
 
@@ -9,13 +9,18 @@ CREATE TABLE POKEMON (
     species TEXT NOT NULL UNIQUE,
     type_1 TEXT NOT NULL,
     type_2 TEXT,
-    base_stats INTEGER NOT NULL,
+    stat_hp INTEGER NOT NULL,
+    stat_atk INTEGER NOT NULL,
+    stat_def INTEGER NOT NULL,
+    stat_sp_atk INTEGER NOT NULL,
+    stat_sp_def INTEGER NOT NULL,
+    stat_speed INTEGER NOT NULL,
     ability_1 INTEGER NOT NULL,
-    ability_2 INTEGER NOT NULL,
-    ability_3 INTEGER NOT NULL,
+    ability_2 INTEGER,
+    ability_hidden INTEGER NOT NULL,
     FOREIGN KEY(ability_1) REFERENCES ABILITIES(ability_id),
     FOREIGN KEY(ability_2) REFERENCES ABILITIES(ability_id),
-    FOREIGN KEY(ability_3) REFERENCES ABILITIES(ability_id)
+    FOREIGN KEY(ability_hidden) REFERENCES ABILITIES(ability_id)
 );
 
 -- TODO: Moves as their own table

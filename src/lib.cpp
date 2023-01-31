@@ -1,10 +1,12 @@
 #include <iostream>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include "sqlite3.h"
 #include <string>
 #include <vector>
 namespace py = pybind11;
+
+#include "Pokemon.hpp"
+#include "sqlite3.h"
 
 int add(int x, int y) { return x + y; }
 
@@ -23,9 +25,10 @@ std::vector<std::string> get_from_db(std::string cmd) {
         std::cerr << "error: " << sqlite3_errmsg(db);
         return ret;
     }
-    
+
     while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-        ret.push_back(std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+        ret.push_back(std::string(
+            reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0))));
     }
     if (rc != SQLITE_DONE) {
         std::cerr << "error: " << sqlite3_errmsg(db);
