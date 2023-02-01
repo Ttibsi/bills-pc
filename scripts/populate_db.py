@@ -74,7 +74,15 @@ def get_species_data(id: int, name: str) -> Dict[str, Any]:
     data = req.json()
 
     ret["dex_id"] = id
-    ret["species"] = name
+    if name == "Nidoran-m":
+        ret["species"] = "NidoranM"
+    elif name == "Nidoran-f":
+        ret["species"] = "NidoranF"
+    elif name == "Mr-mime":
+        ret["species"] = "MrMime"
+    else:
+        ret["species"] = name
+
     ret["type_1"] = data["types"][0]["type"]["name"].capitalize()
     try:
         ret["type_2"] = data["types"][1]["type"]["name"].capitalize()
