@@ -28,17 +28,24 @@ def insert_abilities_to_database(ability_data: Dict[str, Any]):
     cur = con.cursor()
 
     for ability in ability_data:
-        id = ability["ability"]["url"].split("/")[-2]
-        name = ability["ability"]["name"].capitalize()
+        id = ability["ability"]["url"].split("/")[-2]  # type: ignore
+        name = ability["ability"]["name"].capitalize()  # type: ignore
         try:
-            short_str = rf"{requests.get(ability['ability']['url']).json()['effect_entries'][1]['short_effect']}"
+            ability_json = requests.get(
+                ability["ability"]["url"]  # type: ignore
+            ).json()
+            short_str = rf"{ability_json['effect_entries'][1]['short_effect']}"
         except IndexError:
-            # Abilities originating in gen8 (SwSh) aren't fully fleshed out in pokeapi
+            # Abilities originating in gen8 (SwSh) aren't fully fleshed out
+            # in pokeapi
             short_str = ""
 
         try:
             cur.execute(
-                f'INSERT INTO ABILITIES VALUES ("{id}", "{name.capitalize()}", "{short_str}");'
+                f"""INSERT INTO ABILITIES VALUES (
+                    "{id}",
+                    "{name.capitalize()}",
+                    "{short_str}");"""
             )
         except sqlite3.IntegrityError:
             continue
@@ -51,7 +58,8 @@ def get_ability_id(name: str) -> int:
     con = sqlite3.connect("db.db")
     cur = con.cursor()
     res = cur.execute(
-        f"SELECT ability_id FROM ABILITIES WHERE name == '{name.capitalize()}';"
+        f"""SELECT ability_id FROM ABILITIES WHERE name == '{
+            name.capitalize()}';"""
     ).fetchone()[0]
     con.close()
     return res
@@ -90,7 +98,9 @@ def get_species_data(id: int, name: str) -> Dict[str, Any]:
                 data["abilities"][1]["ability"]["name"]
             )
         else:
-            ret["ability_2"] = get_ability_id(data["abilities"][1]["ability"]["name"])
+            ret["ability_2"] = get_ability_id(
+                data["abilities"][1]["ability"]["name"]
+            )
             ret["ability_hidden"] = get_ability_id(
                 data["abilities"][2]["ability"]["name"]
             )
@@ -133,6 +143,7 @@ def populate_pokemon_data(names: Dict[int, str]):
 def main() -> int:
     names: Dict[int, str] = get_pokemon_names()
     populate_pokemon_data(names)
+    return 0
 
 
 if __name__ == "__main__":
