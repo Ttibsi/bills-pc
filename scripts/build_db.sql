@@ -33,5 +33,6 @@ CREATE TABLE STORAGE (
     move_1 TEXT NOT NULL UNIQUE,
     move_2 TEXT UNIQUE,
     move_3 TEXT UNIQUE,
-    move_4 TEXT UNIQUE
+    move_4 TEXT UNIQUE,
+    is_shiny BOOLEAN
 );

@@ -42,3 +42,4 @@ db-clean: # Regenerate database from script
 	@echo "[Regenerating database]"
 	rm db.db
 	sqlite3 db.db < scripts/build_db.sql
+	python3 scripts/populate_db.py

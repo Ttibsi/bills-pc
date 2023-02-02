@@ -144,6 +144,7 @@ def populate_pokemon_data(names: Dict[int, str]):
             )"""
         )
 
+        print(f"Inserting: {data['species']}")
         con.commit()
         con.close()
 
