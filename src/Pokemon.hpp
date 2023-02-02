@@ -4,6 +4,9 @@
 #include <string>
 #include <vector>
 
+#include <pybind11/stl.h>
+namespace py = pybind11;
+
 enum class Species {
     Bulbasaur,
     Ivysaur,
@@ -162,13 +165,19 @@ struct Pokemon {
     std::string nickname;
     Species species;
     int lvl;
-    std::vector<std::string> move;
+    std::vector<std::string> moves;
 
     // Methods
-    Pokemon();
+    Pokemon(std::string name, Species species, int lvl,
+            std::vector<std::string> move_lst);
+    py::list list_moves();
 };
 
 // Constructor
-inline Pokemon::Pokemon() {}
+inline Pokemon::Pokemon(std::string name, Species species, int lvl,
+                        std::vector<std::string> move_lst)
+    : nickname{name}, species{species}, lvl{lvl}, moves{move_lst} {}
+
+py::list inline Pokemon::list_moves() { return py::cast(this->moves); }
 
 #endif
