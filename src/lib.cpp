@@ -46,6 +46,8 @@ PYBIND11_MODULE(bpc_cpp, m) {
 
     py::class_<Pokemon>(m, "Pokemon")
         .def(py::init<std::string, Species, int, std::vector<std::string>>())
+        .def(py::init<std::string, Species, int, std::vector<std::string>,
+                      bool>())
         .def("list_moves", &Pokemon::list_moves);
 
     py::enum_<Species>(m, "Species")

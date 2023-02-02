@@ -170,11 +170,19 @@ struct Pokemon {
 
     // Methods
     Pokemon(std::string name, Species species, int lvl,
+            std::vector<std::string> move_lst);
+    Pokemon(std::string name, Species species, int lvl,
             std::vector<std::string> move_lst, bool shiny);
     py::list list_moves();
 };
 
 // Constructor
+inline Pokemon::Pokemon(std::string name, Species species, int lvl,
+                        std::vector<std::string> move_lst)
+    : nickname{name}, species{species}, lvl{lvl}, moves{move_lst} {
+    this->is_shiny = false;
+}
+
 inline Pokemon::Pokemon(std::string name, Species species, int lvl,
                         std::vector<std::string> move_lst, bool shiny)
     : nickname{name}, species{species}, lvl{lvl}, moves{move_lst},
