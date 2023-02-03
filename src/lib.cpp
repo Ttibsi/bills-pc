@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 #include "Pokemon.hpp"
+#include "Species.hpp"
 #include "sqlite3.h"
 
 int add(int x, int y) { return x + y; }
@@ -48,7 +49,11 @@ PYBIND11_MODULE(bpc_cpp, m) {
         .def(py::init<std::string, Species, int, std::vector<std::string>>())
         .def(py::init<std::string, Species, int, std::vector<std::string>,
                       bool>())
-        .def("list_moves", &Pokemon::list_moves);
+        .def("get_nick", &Pokemon::get_nick)
+        .def("get_species", &Pokemon::get_species)
+        .def("get_level", &Pokemon::get_level)
+        .def("get_moves", &Pokemon::get_moves)
+        .def("get_shiny", &Pokemon::get_shiny);
 
     py::enum_<Species>(m, "Species")
         .value("Bulbasaur", Species::Bulbasaur)

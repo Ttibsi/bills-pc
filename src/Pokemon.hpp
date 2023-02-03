@@ -1,165 +1,13 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
+#include <pybind11/stl.h>
 #include <string>
 #include <vector>
 
-#include <pybind11/stl.h>
-namespace py = pybind11;
+#include "Species.hpp"
 
-enum class Species {
-    Bulbasaur,
-    Ivysaur,
-    Venusaur,
-    Charmander,
-    Charmeleon,
-    Charizard,
-    Squirtle,
-    Wartortle,
-    Blastoise,
-    Caterpie,
-    Metapod,
-    Butterfree,
-    Weedle,
-    Kakuna,
-    Beedrill,
-    Pidgey,
-    Pidgeotto,
-    Pidgeot,
-    Rattata,
-    Raticate,
-    Spearow,
-    Fearow,
-    Ekans,
-    Arbok,
-    Pikachu,
-    Raichu,
-    Sandshrew,
-    Sandslash,
-    NidoranF,
-    Nidorina,
-    Nidoqueen,
-    NidoranM,
-    Nidorino,
-    Nidoking,
-    Clefairy,
-    Clefable,
-    Vulpix,
-    Ninetales,
-    Jigglypuff,
-    Wigglytuff,
-    Zubat,
-    Golbat,
-    Oddish,
-    Gloom,
-    Vileplume,
-    Paras,
-    Parasect,
-    Venonat,
-    Venomoth,
-    Diglett,
-    Dugtrio,
-    Meowth,
-    Persian,
-    Psyduck,
-    Golduck,
-    Mankey,
-    Primeape,
-    Growlithe,
-    Arcanine,
-    Poliwag,
-    Poliwhirl,
-    Poliwrath,
-    Abra,
-    Kadabra,
-    Alakazam,
-    Machop,
-    Machoke,
-    Machamp,
-    Bellsprout,
-    Weepinbell,
-    Victreebel,
-    Tentacool,
-    Tentacruel,
-    Geodude,
-    Graveler,
-    Golem,
-    Ponyta,
-    Rapidash,
-    Slowpoke,
-    Slowbro,
-    Magnemite,
-    Magneton,
-    Farfetchd,
-    Doduo,
-    Dodrio,
-    Seel,
-    Dewgong,
-    Grimer,
-    Muk,
-    Shellder,
-    Cloyster,
-    Gastly,
-    Haunter,
-    Gengar,
-    Onix,
-    Drowzee,
-    Hypno,
-    Krabby,
-    Kingler,
-    Voltorb,
-    Electrode,
-    Exeggcute,
-    Exeggutor,
-    Cubone,
-    Marowak,
-    Hitmonlee,
-    Hitmonchan,
-    Lickitung,
-    Koffing,
-    Weezing,
-    Rhyhorn,
-    Rhydon,
-    Chansey,
-    Tangela,
-    Kangaskhan,
-    Horsea,
-    Seadra,
-    Goldeen,
-    Seaking,
-    Staryu,
-    Starmie,
-    MrMime,
-    Scyther,
-    Jynx,
-    Electabuzz,
-    Magmar,
-    Pinsir,
-    Tauros,
-    Magikarp,
-    Gyarados,
-    Lapras,
-    Ditto,
-    Eevee,
-    Vaporeon,
-    Jolteon,
-    Flareon,
-    Porygon,
-    Omanyte,
-    Omastar,
-    Kabuto,
-    Kabutops,
-    Aerodactyl,
-    Snorlax,
-    Articuno,
-    Zapdos,
-    Moltres,
-    Dratini,
-    Dragonair,
-    Dragonite,
-    Mewtwo,
-    Mew,
-};
+namespace py = pybind11;
 
 struct Pokemon {
     std::string nickname;
@@ -173,7 +21,11 @@ struct Pokemon {
             std::vector<std::string> move_lst);
     Pokemon(std::string name, Species species, int lvl,
             std::vector<std::string> move_lst, bool shiny);
-    py::list list_moves();
+    py::str get_nick();
+    py::str get_species();
+    py::int_ get_level();
+    py::list get_moves();
+    py::bool_ get_shiny();
 };
 
 // Constructor
@@ -188,6 +40,12 @@ inline Pokemon::Pokemon(std::string name, Species species, int lvl,
     : nickname{name}, species{species}, lvl{lvl}, moves{move_lst},
       is_shiny(shiny) {}
 
-py::list inline Pokemon::list_moves() { return py::cast(this->moves); }
+py::str inline Pokemon::get_nick() { return py::cast(this->nickname); }
+py::str inline Pokemon::get_species() {
+    return py::cast(species_stringify(this->species));
+}
+py::int_ inline Pokemon::get_level() { return py::cast(this->lvl); }
+py::list inline Pokemon::get_moves() { return py::cast(this->moves); }
+py::bool_ inline Pokemon::get_shiny() { return py::cast(this->is_shiny); }
 
 #endif
