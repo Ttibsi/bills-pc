@@ -4,7 +4,7 @@ project(bills-pc)
 add_subdirectory(include)
 set(FILES
     src/lib.cpp
-    src/sqlite3.h
-    src/sqlite3.c
+    include/sqlite/sqlite3.h
+    include/sqlite/sqlite3.c
 )
 pybind11_add_module(bpc_cpp ${FILES})

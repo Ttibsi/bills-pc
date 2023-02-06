@@ -21,3 +21,7 @@ def main():
     print(f"pkmn2 level: {pkmn2.get_level()}")
     print(f"pkmn2 moves: {pkmn2.get_moves()}")
     print(f"pkmn2 is shiny: {pkmn2.get_shiny()}")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
