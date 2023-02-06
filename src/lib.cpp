@@ -53,7 +53,10 @@ PYBIND11_MODULE(bpc_cpp, m) {
         .def("get_species", &Pokemon::get_species)
         .def("get_level", &Pokemon::get_level)
         .def("get_moves", &Pokemon::get_moves)
-        .def("get_shiny", &Pokemon::get_shiny);
+        .def("get_shiny", &Pokemon::get_shiny)
+        .def("set_lvl", &Pokemon::set_lvl)
+        .def("add_move", &Pokemon::add_move)
+        .def("del_move", &Pokemon::del_move);
 
     py::enum_<Species>(m, "Species")
         .value("Bulbasaur", Species::Bulbasaur)
