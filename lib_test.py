@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import bpc_cpp as billspc
 
 
@@ -25,6 +26,7 @@ def main():
     print(f"pkmn2 level: {pkmn2.get_level()}")
     print(f"pkmn2 moves: {pkmn2.get_moves()}")
     print(f"pkmn2 is shiny: {pkmn2.get_shiny()}")
+    print("\n")
 
     print("set level to 69")
     pkmn1.set_lvl(69)
@@ -32,14 +34,22 @@ def main():
     print("set level to 420 (Should return an error)")
     pkmn2.set_lvl(420)
     print(f"pkmn2 level: {pkmn2.get_level()}")
+    print("\n")
 
     print("Setting new move to 'blah' - pkmn1 will fail")
     pkmn1.add_move("blah")
     pkmn2.add_move("blah")
     print(f"pkmn2 moves: {pkmn2.get_moves()}")
+    print("\n")
 
     print("Removing move Foo")
     pkmn1.del_move("Foo")
+    print("\n")
+
+    print("Testing object in print")
+    print(pkmn1.str())
+    print(pkmn2.str())
+    print("\n")
 
 
 if __name__ == "__main__":

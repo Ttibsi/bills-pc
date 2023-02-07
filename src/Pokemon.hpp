@@ -24,6 +24,7 @@ struct Pokemon {
             std::vector<std::string> move_lst);
     Pokemon(std::string name, Species species, int lvl,
             std::vector<std::string> move_lst, bool shiny);
+    py::str print();
     py::str get_nick();
     py::str get_species();
     py::int_ get_level();
@@ -37,14 +38,31 @@ struct Pokemon {
 // Constructor
 inline Pokemon::Pokemon(std::string name, Species species, int lvl,
                         std::vector<std::string> move_lst)
-    : nickname{name}, species{species}, lvl{lvl}, moves{move_lst} {
+    : nickname{'"' + name + '"'}, species{species}, lvl{lvl}, moves{move_lst} {
     this->is_shiny = false;
 }
 
 inline Pokemon::Pokemon(std::string name, Species species, int lvl,
                         std::vector<std::string> move_lst, bool shiny)
-    : nickname{name}, species{species}, lvl{lvl}, moves{move_lst},
+    : nickname{'"' + name + '"'}, species{species}, lvl{lvl}, moves{move_lst},
       is_shiny(shiny) {}
+
+py::str inline Pokemon::print() {
+    std::string os = "Pokemon{" + this->nickname + ", " +
+                     species_stringify(this->species) + ", lvl" +
+                     std::to_string(this->lvl) +
+                     ", Shiny: " + (this->is_shiny ? "True" : "False") + ", [";
+
+    for (std::string &i : this->moves) {
+        os += i;
+        if (!(&i == &this->moves.back()))
+            os += ", ";
+    }
+
+    os += "]}";
+
+    return py::cast(os);
+}
 
 py::str inline Pokemon::get_nick() { return py::cast(this->nickname); }
 py::str inline Pokemon::get_species() {

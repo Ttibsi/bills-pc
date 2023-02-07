@@ -49,6 +49,7 @@ PYBIND11_MODULE(bpc_cpp, m) {
         .def(py::init<std::string, Species, int, std::vector<std::string>>())
         .def(py::init<std::string, Species, int, std::vector<std::string>,
                       bool>())
+        .def("str", &Pokemon::print)
         .def("get_nick", &Pokemon::get_nick)
         .def("get_species", &Pokemon::get_species)
         .def("get_level", &Pokemon::get_level)
