@@ -144,7 +144,7 @@ def populate_pokemon_data(names: Dict[int, str]):
             )"""
         )
 
-        print(f"Inserting: {data['species']}")
+        print(f"Inserting ({data['dex_id']}/{LIMIT}): {data['species']}")
         con.commit()
         con.close()
 

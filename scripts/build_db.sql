@@ -26,7 +26,7 @@ CREATE TABLE POKEMON (
 -- TODO: Moves as their own table
 
 CREATE TABLE STORAGE (
-    pkmn_id INTEGER PRIMARY KEY NOT NULL,
+    pkmn_id INTEGER PRIMARY KEY AUTOINCREMENT,
     nickname TEXT,
     species INTEGER NOT NULL,
     level INTEGER NOT NULL,
