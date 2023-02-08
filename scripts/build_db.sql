@@ -1,3 +1,8 @@
+-- To refactor into:
+-- Create Table Pokemon (Primary Id, Name text)
+-- Create Table Moves (Primary Id, Name text) -- list of all possible moves
+-- Create Table PokemonMoves (Primary Id, PokemonId Id, MoveId Id) constraint Unique (PokemonId, MoveId)
+
 CREATE TABLE ABILITIES (
     ability_id INTEGER NOT NULL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
@@ -30,9 +35,9 @@ CREATE TABLE STORAGE (
     nickname TEXT,
     species INTEGER NOT NULL,
     level INTEGER NOT NULL,
-    move_1 TEXT NOT NULL UNIQUE,
-    move_2 TEXT UNIQUE,
-    move_3 TEXT UNIQUE,
-    move_4 TEXT UNIQUE,
+    move_1 TEXT NOT NULL,
+    move_2 TEXT,
+    move_3 TEXT,
+    move_4 TEXT,
     is_shiny BOOLEAN
 );

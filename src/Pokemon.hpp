@@ -23,9 +23,9 @@ struct Pokemon {
     bool is_shiny;
 
     // Methods
-    Pokemon(std::string name, Species species, int lvl,
+    Pokemon(std::string name, std::string species, int lvl,
             std::vector<std::string> move_lst);
-    Pokemon(std::string name, Species species, int lvl,
+    Pokemon(std::string name, std::string species, int lvl,
             std::vector<std::string> move_lst, bool shiny);
     py::str print();
     py::str get_nick();
@@ -39,18 +39,19 @@ struct Pokemon {
 };
 
 // Constructor
-inline Pokemon::Pokemon(std::string name, Species species, int lvl,
+inline Pokemon::Pokemon(std::string name, std::string species, int lvl,
                         std::vector<std::string> move_lst)
-    : nickname{'"' + name + '"'}, species{species}, lvl{lvl}, moves{move_lst} {
+    : nickname{'"' + name + '"'}, species{to_species(species)}, lvl{lvl},
+      moves{move_lst} {
     this->is_shiny = false;
-    insert_pkmn(name, species_stringify(species), lvl, move_lst, false);
+    insert_pkmn(name, species, lvl, move_lst, false);
 }
 
-inline Pokemon::Pokemon(std::string name, Species species, int lvl,
+inline Pokemon::Pokemon(std::string name, std::string species, int lvl,
                         std::vector<std::string> move_lst, bool shiny)
-    : nickname{'"' + name + '"'}, species{species}, lvl{lvl}, moves{move_lst},
-      is_shiny(shiny) {
-    insert_pkmn(name, species_stringify(species), lvl, move_lst, is_shiny);
+    : nickname{'"' + name + '"'}, species{to_species(species)}, lvl{lvl},
+      moves{move_lst}, is_shiny(shiny) {
+    insert_pkmn(name, species, lvl, move_lst, is_shiny);
 }
 
 py::str inline Pokemon::print() {
@@ -107,11 +108,13 @@ void inline Pokemon::del_move(std::string old_move) {
 
 // -----------
 // Standalone functions
+
 void inline insert_pkmn(std::string nick, std::string species, int lvl,
                         std::vector<std::string> moves, bool is_shiny) {
     std::string cmd = std::string("INSERT INTO STORAGE VALUES (NULL, '") +=
-        nick += std::string("', '") += species += std::string("', ") +=
-        std::to_string(lvl) += std::string(", ");
+        std::string(nick.empty() ? "NULL" : nick) += std::string("', '") +=
+        species += std::string("', ") += std::to_string(lvl) +=
+        std::string(", ");
     for (std::string &i : moves) {
         cmd += std::string("'") += i += std::string("'");
         if (!(&i == &moves.back()))

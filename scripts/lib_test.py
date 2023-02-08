@@ -47,8 +47,8 @@ def main():
     # print("\n")
     #
     print("Testing object in print")
-    print(pkmn1.str())
-    print(pkmn2.str())
+    print(pkmn1)
+    print(pkmn2)
     print("\n")
 
 
