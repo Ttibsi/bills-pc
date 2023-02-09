@@ -4,6 +4,7 @@
 #include <string>
 
 enum class Species {
+    MissingNo,
     Bulbasaur,
     Ivysaur,
     Venusaur,
@@ -1071,6 +1072,8 @@ Species inline to_species(std::string inp) {
         return Species::Mewtwo;
     if (inp == "Mew")
         return Species::Mew;
+
+    return Species::MissingNo;
 }
 
 #endif

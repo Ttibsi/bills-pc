@@ -40,23 +40,28 @@ struct Pokemon {
 
 // Constructor
 inline Pokemon::Pokemon(std::string name, std::string species, int lvl,
-                        std::vector<std::string> move_lst)
-    : nickname{'"' + name + '"'}, species{to_species(species)}, lvl{lvl},
-      moves{move_lst} {
+                        std::vector<std::string> move_lst) {
+    this->nickname = (name.empty() ? "" : '"' + name + '"');
+    this->species = to_species(species);
+    this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
+    this->moves = move_lst;
     this->is_shiny = false;
     insert_pkmn(name, species, lvl, move_lst, false);
 }
 
 inline Pokemon::Pokemon(std::string name, std::string species, int lvl,
-                        std::vector<std::string> move_lst, bool shiny)
-    : nickname{'"' + name + '"'}, species{to_species(species)}, lvl{lvl},
-      moves{move_lst}, is_shiny(shiny) {
+                        std::vector<std::string> move_lst, bool shiny) {
+    this->nickname = (name.empty() ? "" : '"' + name + '"');
+    this->species = to_species(species);
+    this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
+    this->moves = move_lst;
+    this->is_shiny = shiny;
     insert_pkmn(name, species, lvl, move_lst, is_shiny);
 }
 
 py::str inline Pokemon::print() {
     std::string os = "Pokemon{" + this->nickname + ", " +
-                     species_stringify(this->species) + ", lvl" +
+                     species_stringify(this->species) + ", lvl " +
                      std::to_string(this->lvl) +
                      ", Shiny: " + (this->is_shiny ? "True" : "False") + ", [";
 
@@ -87,6 +92,7 @@ void inline Pokemon::set_lvl(int new_lvl) {
         std::cerr << "Level value out of range 1-100\n";
     }
 }
+
 void inline Pokemon::add_move(std::string new_move) {
     if (this->moves.size() >= 4) {
         std::cerr << "Move list full. Remove move first\n";
@@ -96,6 +102,7 @@ void inline Pokemon::add_move(std::string new_move) {
         std::cout << new_move << " added\n";
     }
 }
+
 void inline Pokemon::del_move(std::string old_move) {
     auto mvs = this->moves;
     if (std::find(mvs.begin(), mvs.end(), old_move) != mvs.end()) {
@@ -131,7 +138,6 @@ void inline insert_pkmn(std::string nick, std::string species, int lvl,
     }
 
     cmd += std::string(is_shiny ? "True" : "False") += std::string(");");
-    std::cout << cmd << "\n";
     insert_db(cmd);
 }
 
