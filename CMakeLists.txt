@@ -5,6 +5,7 @@ add_subdirectory(include)
 set(FILES
     src/lib.cpp
     src/database.cpp
+    src/db_interface.cpp
     include/sqlite/sqlite3.h
     include/sqlite/sqlite3.c
 )
