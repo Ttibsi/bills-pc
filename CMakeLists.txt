@@ -4,6 +4,7 @@ project(bills-pc)
 add_subdirectory(include)
 set(FILES
     src/lib.cpp
+    src/database.cpp
     include/sqlite/sqlite3.h
     include/sqlite/sqlite3.c
 )

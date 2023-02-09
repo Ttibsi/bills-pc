@@ -4,6 +4,7 @@
 #include <string>
 
 enum class Species {
+    MissingNo,
     Bulbasaur,
     Ivysaur,
     Venusaur,
@@ -464,6 +465,615 @@ std::string inline species_stringify(Species sp) {
     default:
         return std::string("");
     }
+}
+
+Species inline to_species(std::string inp) {
+    if (inp == "Bulbasaur")
+        return Species::Bulbasaur;
+    if (inp == "Ivysaur")
+        return Species::Ivysaur;
+    if (inp == "Venusaur")
+        return Species::Venusaur;
+    if (inp == "Charmander")
+        return Species::Charmander;
+    if (inp == "Charmeleon")
+        return Species::Charmeleon;
+    if (inp == "Charizard")
+        return Species::Charizard;
+    if (inp == "Squirtle")
+        return Species::Squirtle;
+    if (inp == "Wartortle")
+        return Species::Wartortle;
+    if (inp == "Blastoise")
+        return Species::Blastoise;
+    if (inp == "Caterpie")
+        return Species::Caterpie;
+    if (inp == "Metapod")
+        return Species::Metapod;
+    if (inp == "Butterfree")
+        return Species::Butterfree;
+    if (inp == "Weedle")
+        return Species::Weedle;
+    if (inp == "Kakuna")
+        return Species::Kakuna;
+    if (inp == "Beedrill")
+        return Species::Beedrill;
+    if (inp == "Pidgey")
+        return Species::Pidgey;
+    if (inp == "Pidgeotto")
+        return Species::Pidgeotto;
+    if (inp == "Pidgeot")
+        return Species::Pidgeot;
+    if (inp == "Rattata")
+        return Species::Rattata;
+    if (inp == "Raticate")
+        return Species::Raticate;
+    if (inp == "Spearow")
+        return Species::Spearow;
+    if (inp == "Fearow")
+        return Species::Fearow;
+    if (inp == "Ekans")
+        return Species::Ekans;
+    if (inp == "Arbok")
+        return Species::Arbok;
+    if (inp == "Pikachu")
+        return Species::Pikachu;
+    if (inp == "Raichu")
+        return Species::Raichu;
+    if (inp == "Sandshrew")
+        return Species::Sandshrew;
+    if (inp == "Sandslash")
+        return Species::Sandslash;
+    if (inp == "NidoranF")
+        return Species::NidoranF;
+    if (inp == "Nidorina")
+        return Species::Nidorina;
+    if (inp == "Nidoqueen")
+        return Species::Nidoqueen;
+    if (inp == "NidoranM")
+        return Species::NidoranM;
+    if (inp == "Nidorino")
+        return Species::Nidorino;
+    if (inp == "Nidoking")
+        return Species::Nidoking;
+    if (inp == "Clefairy")
+        return Species::Clefairy;
+    if (inp == "Clefable")
+        return Species::Clefable;
+    if (inp == "Vulpix")
+        return Species::Vulpix;
+    if (inp == "Ninetales")
+        return Species::Ninetales;
+    if (inp == "Jigglypuff")
+        return Species::Jigglypuff;
+    if (inp == "Wigglytuff")
+        return Species::Wigglytuff;
+    if (inp == "Zubat")
+        return Species::Zubat;
+    if (inp == "Golbat")
+        return Species::Golbat;
+    if (inp == "Oddish")
+        return Species::Oddish;
+    if (inp == "Gloom")
+        return Species::Gloom;
+    if (inp == "Vileplume")
+        return Species::Vileplume;
+    if (inp == "Paras")
+        return Species::Paras;
+    if (inp == "Parasect")
+        return Species::Parasect;
+    if (inp == "Venonat")
+        return Species::Venonat;
+    if (inp == "Venomoth")
+        return Species::Venomoth;
+    if (inp == "Diglett")
+        return Species::Diglett;
+    if (inp == "Dugtrio")
+        return Species::Dugtrio;
+    if (inp == "Meowth")
+        return Species::Meowth;
+    if (inp == "Persian")
+        return Species::Persian;
+    if (inp == "Psyduck")
+        return Species::Psyduck;
+    if (inp == "Golduck")
+        return Species::Golduck;
+    if (inp == "Mankey")
+        return Species::Mankey;
+    if (inp == "Primeape")
+        return Species::Primeape;
+    if (inp == "Growlithe")
+        return Species::Growlithe;
+    if (inp == "Arcanine")
+        return Species::Arcanine;
+    if (inp == "Poliwag")
+        return Species::Poliwag;
+    if (inp == "Poliwhirl")
+        return Species::Poliwhirl;
+    if (inp == "Poliwrath")
+        return Species::Poliwrath;
+    if (inp == "Abra")
+        return Species::Abra;
+    if (inp == "Kadabra")
+        return Species::Kadabra;
+    if (inp == "Alakazam")
+        return Species::Alakazam;
+    if (inp == "Machop")
+        return Species::Machop;
+    if (inp == "Machoke")
+        return Species::Machoke;
+    if (inp == "Machamp")
+        return Species::Machamp;
+    if (inp == "Bellsprout")
+        return Species::Bellsprout;
+    if (inp == "Weepinbell")
+        return Species::Weepinbell;
+    if (inp == "Victreebel")
+        return Species::Victreebel;
+    if (inp == "Tentacool")
+        return Species::Tentacool;
+    if (inp == "Tentacruel")
+        return Species::Tentacruel;
+    if (inp == "Geodude")
+        return Species::Geodude;
+    if (inp == "Graveler")
+        return Species::Graveler;
+    if (inp == "Golem")
+        return Species::Golem;
+    if (inp == "Ponyta")
+        return Species::Ponyta;
+    if (inp == "Rapidash")
+        return Species::Rapidash;
+    if (inp == "Slowpoke")
+        return Species::Slowpoke;
+    if (inp == "Slowbro")
+        return Species::Slowbro;
+    if (inp == "Magnemite")
+        return Species::Magnemite;
+    if (inp == "Magneton")
+        return Species::Magneton;
+    if (inp == "Farfetchd")
+        return Species::Farfetchd;
+    if (inp == "Doduo")
+        return Species::Doduo;
+    if (inp == "Dodrio")
+        return Species::Dodrio;
+    if (inp == "Seel")
+        return Species::Seel;
+    if (inp == "Dewgong")
+        return Species::Dewgong;
+    if (inp == "Grimer")
+        return Species::Grimer;
+    if (inp == "Muk")
+        return Species::Muk;
+    if (inp == "Shellder")
+        return Species::Shellder;
+    if (inp == "Cloyster")
+        return Species::Cloyster;
+    if (inp == "Gastly")
+        return Species::Gastly;
+    if (inp == "Haunter")
+        return Species::Haunter;
+    if (inp == "Gengar")
+        return Species::Gengar;
+    if (inp == "Onix")
+        return Species::Onix;
+    if (inp == "Drowzee")
+        return Species::Drowzee;
+    if (inp == "Hypno")
+        return Species::Hypno;
+    if (inp == "Krabby")
+        return Species::Krabby;
+    if (inp == "Kingler")
+        return Species::Kingler;
+    if (inp == "Voltorb")
+        return Species::Voltorb;
+    if (inp == "Electrode")
+        return Species::Electrode;
+    if (inp == "Exeggcute")
+        return Species::Exeggcute;
+    if (inp == "Exeggutor")
+        return Species::Exeggutor;
+    if (inp == "Cubone")
+        return Species::Cubone;
+    if (inp == "Marowak")
+        return Species::Marowak;
+    if (inp == "Hitmonlee")
+        return Species::Hitmonlee;
+    if (inp == "Hitmonchan")
+        return Species::Hitmonchan;
+    if (inp == "Lickitung")
+        return Species::Lickitung;
+    if (inp == "Koffing")
+        return Species::Koffing;
+    if (inp == "Weezing")
+        return Species::Weezing;
+    if (inp == "Rhyhorn")
+        return Species::Rhyhorn;
+    if (inp == "Rhydon")
+        return Species::Rhydon;
+    if (inp == "Chansey")
+        return Species::Chansey;
+    if (inp == "Tangela")
+        return Species::Tangela;
+    if (inp == "Kangaskhan")
+        return Species::Kangaskhan;
+    if (inp == "Horsea")
+        return Species::Horsea;
+    if (inp == "Seadra")
+        return Species::Seadra;
+    if (inp == "Goldeen")
+        return Species::Goldeen;
+    if (inp == "Seaking")
+        return Species::Seaking;
+    if (inp == "Staryu")
+        return Species::Staryu;
+    if (inp == "Starmie")
+        return Species::Starmie;
+    if (inp == "MrMime")
+        return Species::MrMime;
+    if (inp == "Scyther")
+        return Species::Scyther;
+    if (inp == "Jynx")
+        return Species::Jynx;
+    if (inp == "Electabuzz")
+        return Species::Electabuzz;
+    if (inp == "Magmar")
+        return Species::Magmar;
+    if (inp == "Pinsir")
+        return Species::Pinsir;
+    if (inp == "Tauros")
+        return Species::Tauros;
+    if (inp == "Magikarp")
+        return Species::Magikarp;
+    if (inp == "Gyarados")
+        return Species::Gyarados;
+    if (inp == "Lapras")
+        return Species::Lapras;
+    if (inp == "Ditto")
+        return Species::Ditto;
+    if (inp == "Eevee")
+        return Species::Eevee;
+    if (inp == "Vaporeon")
+        return Species::Vaporeon;
+    if (inp == "Jolteon")
+        return Species::Jolteon;
+    if (inp == "Flareon")
+        return Species::Flareon;
+    if (inp == "Porygon")
+        return Species::Porygon;
+    if (inp == "Omanyte")
+        return Species::Omanyte;
+    if (inp == "Omastar")
+        return Species::Omastar;
+    if (inp == "Kabuto")
+        return Species::Kabuto;
+    if (inp == "Kabutops")
+        return Species::Kabutops;
+    if (inp == "Aerodactyl")
+        return Species::Aerodactyl;
+    if (inp == "Snorlax")
+        return Species::Snorlax;
+    if (inp == "Articuno")
+        return Species::Articuno;
+    if (inp == "Zapdos")
+        return Species::Zapdos;
+    if (inp == "Moltres")
+        return Species::Moltres;
+    if (inp == "Dratini")
+        return Species::Dratini;
+    if (inp == "Dragonair")
+        return Species::Dragonair;
+    if (inp == "Dragonite")
+        return Species::Dragonite;
+    if (inp == "Mewtwo")
+        return Species::Mewtwo;
+    if (inp == "Mew")
+        return Species::Mew;
+    if (inp == "Bulbasaur")
+        return Species::Bulbasaur;
+    if (inp == "Ivysaur")
+        return Species::Ivysaur;
+    if (inp == "Venusaur")
+        return Species::Venusaur;
+    if (inp == "Charmander")
+        return Species::Charmander;
+    if (inp == "Charmeleon")
+        return Species::Charmeleon;
+    if (inp == "Charizard")
+        return Species::Charizard;
+    if (inp == "Squirtle")
+        return Species::Squirtle;
+    if (inp == "Wartortle")
+        return Species::Wartortle;
+    if (inp == "Blastoise")
+        return Species::Blastoise;
+    if (inp == "Caterpie")
+        return Species::Caterpie;
+    if (inp == "Metapod")
+        return Species::Metapod;
+    if (inp == "Butterfree")
+        return Species::Butterfree;
+    if (inp == "Weedle")
+        return Species::Weedle;
+    if (inp == "Kakuna")
+        return Species::Kakuna;
+    if (inp == "Beedrill")
+        return Species::Beedrill;
+    if (inp == "Pidgey")
+        return Species::Pidgey;
+    if (inp == "Pidgeotto")
+        return Species::Pidgeotto;
+    if (inp == "Pidgeot")
+        return Species::Pidgeot;
+    if (inp == "Rattata")
+        return Species::Rattata;
+    if (inp == "Raticate")
+        return Species::Raticate;
+    if (inp == "Spearow")
+        return Species::Spearow;
+    if (inp == "Fearow")
+        return Species::Fearow;
+    if (inp == "Ekans")
+        return Species::Ekans;
+    if (inp == "Arbok")
+        return Species::Arbok;
+    if (inp == "Pikachu")
+        return Species::Pikachu;
+    if (inp == "Raichu")
+        return Species::Raichu;
+    if (inp == "Sandshrew")
+        return Species::Sandshrew;
+    if (inp == "Sandslash")
+        return Species::Sandslash;
+    if (inp == "NidoranF")
+        return Species::NidoranF;
+    if (inp == "Nidorina")
+        return Species::Nidorina;
+    if (inp == "Nidoqueen")
+        return Species::Nidoqueen;
+    if (inp == "NidoranM")
+        return Species::NidoranM;
+    if (inp == "Nidorino")
+        return Species::Nidorino;
+    if (inp == "Nidoking")
+        return Species::Nidoking;
+    if (inp == "Clefairy")
+        return Species::Clefairy;
+    if (inp == "Clefable")
+        return Species::Clefable;
+    if (inp == "Vulpix")
+        return Species::Vulpix;
+    if (inp == "Ninetales")
+        return Species::Ninetales;
+    if (inp == "Jigglypuff")
+        return Species::Jigglypuff;
+    if (inp == "Wigglytuff")
+        return Species::Wigglytuff;
+    if (inp == "Zubat")
+        return Species::Zubat;
+    if (inp == "Golbat")
+        return Species::Golbat;
+    if (inp == "Oddish")
+        return Species::Oddish;
+    if (inp == "Gloom")
+        return Species::Gloom;
+    if (inp == "Vileplume")
+        return Species::Vileplume;
+    if (inp == "Paras")
+        return Species::Paras;
+    if (inp == "Parasect")
+        return Species::Parasect;
+    if (inp == "Venonat")
+        return Species::Venonat;
+    if (inp == "Venomoth")
+        return Species::Venomoth;
+    if (inp == "Diglett")
+        return Species::Diglett;
+    if (inp == "Dugtrio")
+        return Species::Dugtrio;
+    if (inp == "Meowth")
+        return Species::Meowth;
+    if (inp == "Persian")
+        return Species::Persian;
+    if (inp == "Psyduck")
+        return Species::Psyduck;
+    if (inp == "Golduck")
+        return Species::Golduck;
+    if (inp == "Mankey")
+        return Species::Mankey;
+    if (inp == "Primeape")
+        return Species::Primeape;
+    if (inp == "Growlithe")
+        return Species::Growlithe;
+    if (inp == "Arcanine")
+        return Species::Arcanine;
+    if (inp == "Poliwag")
+        return Species::Poliwag;
+    if (inp == "Poliwhirl")
+        return Species::Poliwhirl;
+    if (inp == "Poliwrath")
+        return Species::Poliwrath;
+    if (inp == "Abra")
+        return Species::Abra;
+    if (inp == "Kadabra")
+        return Species::Kadabra;
+    if (inp == "Alakazam")
+        return Species::Alakazam;
+    if (inp == "Machop")
+        return Species::Machop;
+    if (inp == "Machoke")
+        return Species::Machoke;
+    if (inp == "Machamp")
+        return Species::Machamp;
+    if (inp == "Bellsprout")
+        return Species::Bellsprout;
+    if (inp == "Weepinbell")
+        return Species::Weepinbell;
+    if (inp == "Victreebel")
+        return Species::Victreebel;
+    if (inp == "Tentacool")
+        return Species::Tentacool;
+    if (inp == "Tentacruel")
+        return Species::Tentacruel;
+    if (inp == "Geodude")
+        return Species::Geodude;
+    if (inp == "Graveler")
+        return Species::Graveler;
+    if (inp == "Golem")
+        return Species::Golem;
+    if (inp == "Ponyta")
+        return Species::Ponyta;
+    if (inp == "Rapidash")
+        return Species::Rapidash;
+    if (inp == "Slowpoke")
+        return Species::Slowpoke;
+    if (inp == "Slowbro")
+        return Species::Slowbro;
+    if (inp == "Magnemite")
+        return Species::Magnemite;
+    if (inp == "Magneton")
+        return Species::Magneton;
+    if (inp == "Farfetchd")
+        return Species::Farfetchd;
+    if (inp == "Doduo")
+        return Species::Doduo;
+    if (inp == "Dodrio")
+        return Species::Dodrio;
+    if (inp == "Seel")
+        return Species::Seel;
+    if (inp == "Dewgong")
+        return Species::Dewgong;
+    if (inp == "Grimer")
+        return Species::Grimer;
+    if (inp == "Muk")
+        return Species::Muk;
+    if (inp == "Shellder")
+        return Species::Shellder;
+    if (inp == "Cloyster")
+        return Species::Cloyster;
+    if (inp == "Gastly")
+        return Species::Gastly;
+    if (inp == "Haunter")
+        return Species::Haunter;
+    if (inp == "Gengar")
+        return Species::Gengar;
+    if (inp == "Onix")
+        return Species::Onix;
+    if (inp == "Drowzee")
+        return Species::Drowzee;
+    if (inp == "Hypno")
+        return Species::Hypno;
+    if (inp == "Krabby")
+        return Species::Krabby;
+    if (inp == "Kingler")
+        return Species::Kingler;
+    if (inp == "Voltorb")
+        return Species::Voltorb;
+    if (inp == "Electrode")
+        return Species::Electrode;
+    if (inp == "Exeggcute")
+        return Species::Exeggcute;
+    if (inp == "Exeggutor")
+        return Species::Exeggutor;
+    if (inp == "Cubone")
+        return Species::Cubone;
+    if (inp == "Marowak")
+        return Species::Marowak;
+    if (inp == "Hitmonlee")
+        return Species::Hitmonlee;
+    if (inp == "Hitmonchan")
+        return Species::Hitmonchan;
+    if (inp == "Lickitung")
+        return Species::Lickitung;
+    if (inp == "Koffing")
+        return Species::Koffing;
+    if (inp == "Weezing")
+        return Species::Weezing;
+    if (inp == "Rhyhorn")
+        return Species::Rhyhorn;
+    if (inp == "Rhydon")
+        return Species::Rhydon;
+    if (inp == "Chansey")
+        return Species::Chansey;
+    if (inp == "Tangela")
+        return Species::Tangela;
+    if (inp == "Kangaskhan")
+        return Species::Kangaskhan;
+    if (inp == "Horsea")
+        return Species::Horsea;
+    if (inp == "Seadra")
+        return Species::Seadra;
+    if (inp == "Goldeen")
+        return Species::Goldeen;
+    if (inp == "Seaking")
+        return Species::Seaking;
+    if (inp == "Staryu")
+        return Species::Staryu;
+    if (inp == "Starmie")
+        return Species::Starmie;
+    if (inp == "MrMime")
+        return Species::MrMime;
+    if (inp == "Scyther")
+        return Species::Scyther;
+    if (inp == "Jynx")
+        return Species::Jynx;
+    if (inp == "Electabuzz")
+        return Species::Electabuzz;
+    if (inp == "Magmar")
+        return Species::Magmar;
+    if (inp == "Pinsir")
+        return Species::Pinsir;
+    if (inp == "Tauros")
+        return Species::Tauros;
+    if (inp == "Magikarp")
+        return Species::Magikarp;
+    if (inp == "Gyarados")
+        return Species::Gyarados;
+    if (inp == "Lapras")
+        return Species::Lapras;
+    if (inp == "Ditto")
+        return Species::Ditto;
+    if (inp == "Eevee")
+        return Species::Eevee;
+    if (inp == "Vaporeon")
+        return Species::Vaporeon;
+    if (inp == "Jolteon")
+        return Species::Jolteon;
+    if (inp == "Flareon")
+        return Species::Flareon;
+    if (inp == "Porygon")
+        return Species::Porygon;
+    if (inp == "Omanyte")
+        return Species::Omanyte;
+    if (inp == "Omastar")
+        return Species::Omastar;
+    if (inp == "Kabuto")
+        return Species::Kabuto;
+    if (inp == "Kabutops")
+        return Species::Kabutops;
+    if (inp == "Aerodactyl")
+        return Species::Aerodactyl;
+    if (inp == "Snorlax")
+        return Species::Snorlax;
+    if (inp == "Articuno")
+        return Species::Articuno;
+    if (inp == "Zapdos")
+        return Species::Zapdos;
+    if (inp == "Moltres")
+        return Species::Moltres;
+    if (inp == "Dratini")
+        return Species::Dratini;
+    if (inp == "Dragonair")
+        return Species::Dragonair;
+    if (inp == "Dragonite")
+        return Species::Dragonite;
+    if (inp == "Mewtwo")
+        return Species::Mewtwo;
+    if (inp == "Mew")
+        return Species::Mew;
+
+    return Species::MissingNo;
 }
 
 #endif

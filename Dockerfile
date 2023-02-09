@@ -13,6 +13,7 @@ make \
 neovim \
 python3 \
 python3.10-dev \
+sqlite3 \
 tree -y \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
