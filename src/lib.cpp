@@ -7,12 +7,14 @@ namespace py = pybind11;
 #include "db_interface.hpp"
 
 PYBIND11_MODULE(bpc_cpp, m) {
-    // m.def("get_from_db", &get_from_db);
     m.def("get_storage", &get_storage);
     py::class_<Pokemon>(m, "Pokemon")
         .def(
             py::init<std::string, std::string, int, std::vector<std::string>>())
         .def(py::init<std::string, std::string, int, std::vector<std::string>,
+                      bool>())
+        .def(py::init<std::string, Species, int, std::vector<std::string>>())
+        .def(py::init<std::string, Species, int, std::vector<std::string>,
                       bool>())
         .def("__repr__", &Pokemon::print)
         .def("get_nick", &Pokemon::get_nick)

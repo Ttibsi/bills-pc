@@ -1,6 +1,9 @@
-#include "db_interface.hpp"
+#include <pybind11/stl.h>
+namespace py = pybind11;
+
+#include "Pokemon.hpp"
 #include "database.hpp"
-#include <iostream>
+#include "db_interface.hpp"
 
 void insert_pkmn(std::string nick, std::string species, int lvl,
                  std::vector<std::string> moves, bool is_shiny) {
@@ -29,7 +32,6 @@ void insert_pkmn(std::string nick, std::string species, int lvl,
 
 py::list get_storage() {
     std::string cmd = "SELECT * FROM STORAGE;";
-    std::vector<std::string> ret = get_from_db(cmd);
-
+    std::vector<Pokemon> ret = get_from_db(cmd);
     return py::cast(ret);
 }

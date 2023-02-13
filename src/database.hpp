@@ -4,7 +4,9 @@
 #include <string>
 #include <vector>
 
-std::vector<std::string> get_from_db(std::string cmd);
+#include "Pokemon.hpp"
+
+std::vector<Pokemon> get_from_db(std::string cmd);
 void insert_db(std::string cmd);
 
 #endif
