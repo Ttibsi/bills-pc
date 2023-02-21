@@ -4,6 +4,8 @@ from typing import Union
 
 import bpc_cpp as billspc
 
+# TODO: Possibly serve data via flask instead of CLI
+
 
 def welcome():
     string = "WELCOME TO THE POKEMON STORAGE SYSTEM"
@@ -28,6 +30,7 @@ def new_entry():
     print(f"New Pokemon created: {new_pkmn}")
 
 
+# TODO: Make table display better
 def list_all():
     print("Listing all pokemon in storage")
     print("+---------------------------------------------+")

@@ -10,6 +10,12 @@
 #include "database.hpp"
 #include "db_interface.hpp"
 
+// TODO: Verify Pokemon level is legal for species in constructors
+// TODO: Verify moves are legal to species and level
+// This can probably be implemented with a Moves table with all legal moves
+// and a PokemonMoves table that holds all legal moves (via FK) for that
+// pkmn and the level it learns it at (or 0 for egg move/starting move)
+
 // Constructor
 Pokemon::Pokemon(std::string name, std::string species, int lvl,
                  std::vector<std::string> move_lst) {
