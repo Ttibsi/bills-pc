@@ -46,10 +46,9 @@ def main():
     # pkmn1.del_move("Foo")
     # print("\n")
     #
-    print("Testing object in print")
+
     print(pkmn1)
     print(pkmn2)
-    print("\n")
 
 
 if __name__ == "__main__":

@@ -5,6 +5,7 @@ RUN apt-get update && apt-get upgrade -y && \
 apt-get install --no-install-recommends \
 cmake \
 curl \
+gdb \
 git \
 g++ \
 libpython3-dev \
