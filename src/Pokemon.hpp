@@ -10,6 +10,7 @@
 namespace py = pybind11;
 
 struct Pokemon {
+    int id;
     std::string nickname;
     Species species;
     int lvl;
@@ -19,6 +20,8 @@ struct Pokemon {
     // Methods
     Pokemon(std::string, std::string, int, std::vector<std::string>);
     Pokemon(std::string, std::string, int, std::vector<std::string>, bool);
+    Pokemon(int, std::string, std::string, int, std::vector<std::string>);
+    Pokemon(int, std::string, std::string, int, std::vector<std::string>, bool);
     Pokemon(std::string, Species, int, std::vector<std::string>);
     Pokemon(std::string, Species, int, std::vector<std::string>, bool);
     py::str print();

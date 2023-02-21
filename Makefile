@@ -11,7 +11,9 @@ help:
 testenv: # Build a docker environment
 	@echo "[Create Env]"
 	docker build -f Dockerfile -t env .
-	docker run -td --security-opt seccomp=unconfined --name=$(ENV_NAME) env
+	docker run -td --name=$(ENV_NAME) env
+	# Needed for GDB
+	# docker run -td --security-opt seccomp=unconfined --name=$(ENV_NAME) env
 
 generate: testenv # Run CMake in a docker env
 	@echo "[Running CMake]"

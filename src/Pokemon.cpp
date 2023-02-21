@@ -7,47 +7,84 @@
 
 #include "Pokemon.hpp"
 #include "Species.hpp"
+#include "database.hpp"
 #include "db_interface.hpp"
 
 // Constructor
 Pokemon::Pokemon(std::string name, std::string species, int lvl,
                  std::vector<std::string> move_lst) {
+    this->id = 0;
     this->nickname = (name.empty() ? "" : '"' + name + '"');
     this->species = to_species(species);
     this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
     this->moves = move_lst;
     this->is_shiny = false;
-    insert_pkmn(name, species, lvl, move_lst, false);
+
+    if (!(connection_is_active())) {
+        insert_pkmn(name, species, lvl, move_lst, is_shiny);
+    }
 }
 
 Pokemon::Pokemon(std::string name, std::string species, int lvl,
                  std::vector<std::string> move_lst, bool shiny) {
+    this->id = 0;
     this->nickname = (name.empty() ? "" : '"' + name + '"');
     this->species = to_species(species);
     this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
     this->moves = move_lst;
     this->is_shiny = shiny;
-    insert_pkmn(name, species, lvl, move_lst, is_shiny);
+
+    if (!(connection_is_active())) {
+        insert_pkmn(name, species, lvl, move_lst, is_shiny);
+    }
+}
+
+Pokemon::Pokemon(int id, std::string name, std::string species, int lvl,
+                 std::vector<std::string> move_lst) {
+    this->id = id;
+    this->nickname = (name.empty() ? "" : '"' + name + '"');
+    this->species = to_species(species);
+    this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
+    this->moves = move_lst;
+    this->is_shiny = false;
+}
+
+Pokemon::Pokemon(int id, std::string name, std::string species, int lvl,
+                 std::vector<std::string> move_lst, bool shiny) {
+    this->id = id;
+    this->nickname = (name.empty() ? "" : '"' + name + '"');
+    this->species = to_species(species);
+    this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
+    this->moves = move_lst;
+    this->is_shiny = shiny;
 }
 
 Pokemon::Pokemon(std::string name, Species spec, int lvl,
                  std::vector<std::string> move_lst) {
+    this->id = 0;
     this->nickname = (name.empty() ? "" : '"' + name + '"');
     this->species = spec;
     this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
     this->moves = move_lst;
     this->is_shiny = false;
-    insert_pkmn(name, species_stringify(spec), lvl, move_lst, false);
+
+    if (!(connection_is_active())) {
+        insert_pkmn(name, species_stringify(spec), lvl, move_lst, is_shiny);
+    }
 }
 
 Pokemon::Pokemon(std::string name, Species spec, int lvl,
                  std::vector<std::string> move_lst, bool shiny) {
+    this->id = 0;
     this->nickname = (name.empty() ? "" : '"' + name + '"');
     this->species = spec;
     this->lvl = ((lvl > 0 && lvl < 101) ? lvl : -1);
     this->moves = move_lst;
     this->is_shiny = shiny;
-    insert_pkmn(name, species_stringify(spec), lvl, move_lst, is_shiny);
+
+    if (!(connection_is_active())) {
+        insert_pkmn(name, species_stringify(spec), lvl, move_lst, is_shiny);
+    }
 }
 
 py::str Pokemon::print() {

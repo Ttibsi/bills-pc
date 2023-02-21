@@ -30,7 +30,16 @@ def new_entry():
 
 def list_all():
     print("Listing all pokemon in storage")
-    print(billspc.get_storage())
+    print("+---------------------------------------------+")
+    print("| ID | Name | Species | level | Moves | Shiny |")
+    print("+=============================================+")
+
+    for pkmn in billspc.get_storage():
+        print(
+            f"| {pkmn.id} | {pkmn.nickname} | {pkmn.species} | {pkmn.lvl} | {pkmn.moves} | {pkmn.is_shiny} |"  # noqa: E501
+        )
+
+    print("+=============================================+")
 
 
 def remove_entry():
