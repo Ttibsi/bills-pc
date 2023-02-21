@@ -10,5 +10,6 @@ namespace py = pybind11;
 void insert_pkmn(std::string nick, std::string species, int lvl,
                  std::vector<std::string> moves, bool is_shiny);
 py::list get_storage();
+void remove_pkmn(int id);
 
 #endif

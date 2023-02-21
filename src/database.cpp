@@ -6,7 +6,9 @@
 #include "database.hpp"
 #include "sqlite3.h"
 
-// The implementation of this function was iterated on with ChatGPT
+// The implementation of the functions in this file were iterated on with
+// ChatGPT
+
 void insert_db(std::string cmd) {
     sqlite3 *db;
     const auto res = sqlite3_open("./db.db", &db);
@@ -107,4 +109,28 @@ bool connection_is_active() {
     } else {
         return true;
     }
+}
+
+int deleteFromTable(std::string statement) {
+    sqlite3 *db;
+    int result = sqlite3_open("db.db", &db);
+    if (result != SQLITE_OK) {
+        std::cerr << "Error opening database: " << sqlite3_errmsg(db) << '\n';
+        sqlite3_close(db);
+        return 1;
+    }
+
+    char *error_message = nullptr;
+    result =
+        sqlite3_exec(db, statement.c_str(), nullptr, nullptr, &error_message);
+
+    if (result != SQLITE_OK) {
+        std::cerr << "Error executing SQL statement: " << error_message << '\n';
+        sqlite3_free(error_message);
+        sqlite3_close(db);
+        return 1;
+    }
+
+    sqlite3_close(db);
+    return 0;
 }
