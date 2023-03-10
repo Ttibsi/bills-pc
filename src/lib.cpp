@@ -8,6 +8,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(bpc_cpp, m) {
     m.def("get_storage", &get_storage);
+    m.def("remove_pkmn", &remove_pkmn);
     py::class_<Pokemon>(m, "Pokemon")
         .def(
             py::init<std::string, std::string, int, std::vector<std::string>>())

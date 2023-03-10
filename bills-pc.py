@@ -4,6 +4,8 @@ from typing import Union
 
 import bpc_cpp as billspc
 
+# TODO: Possibly serve data via flask instead of CLI
+
 
 def welcome():
     string = "WELCOME TO THE POKEMON STORAGE SYSTEM"
@@ -28,6 +30,7 @@ def new_entry():
     print(f"New Pokemon created: {new_pkmn}")
 
 
+# TODO: Make table display better
 def list_all():
     print("Listing all pokemon in storage")
     print("+---------------------------------------------+")
@@ -42,8 +45,15 @@ def list_all():
     print("+=============================================+")
 
 
-def remove_entry():
-    ...
+def remove_entry(id: int):
+    print(f"Removing pokemon at index {id}. This action is unrecoverable")
+    check = input("Are you sure? (Y/N): ")
+    if check.upper() != "Y":
+        print("Cancelling...")
+        return
+
+    billspc.remove_pkmn(int(id))
+    print("Remove successful")
 
 
 def main(argv: Union[Sequence[str], None] = None) -> int:
@@ -59,7 +69,7 @@ def main(argv: Union[Sequence[str], None] = None) -> int:
     )
 
     commands.add_argument(
-        "--remove", help="Remove specified pokemon via ID", action="store_true"
+        "--remove", help="Remove specified pokemon via ID", action="store"
     )
 
     args: argparse.Namespace = parser.parse_args(argv)
@@ -69,7 +79,7 @@ def main(argv: Union[Sequence[str], None] = None) -> int:
     if args.new:
         new_entry()
     elif args.remove:
-        remove_entry()
+        remove_entry(args.remove)
     elif args.list:
         list_all()
 

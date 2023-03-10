@@ -35,3 +35,10 @@ py::list get_storage() {
     std::vector<Pokemon> ret = get_from_db(cmd);
     return py::cast(ret);
 }
+
+void remove_pkmn(int id) {
+    std::string stmt =
+        "DELETE FROM STORAGE WHERE pkmn_id = " + std::to_string(id) +
+        std::string(";");
+    deleteFromTable(stmt);
+}
